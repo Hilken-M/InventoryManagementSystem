@@ -14,7 +14,6 @@ import java.util.Collection;
 @ToString
 public class Store {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int storeId;
     @Column
     private String storeName;

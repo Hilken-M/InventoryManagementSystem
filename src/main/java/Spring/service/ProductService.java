@@ -1,14 +1,16 @@
 package Spring.service;
 
+import Spring.Application;
 import Spring.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import Spring.repository.ProductRepository;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 
 import java.util.List;
 
-@Service
+@Component
 public class ProductService {
     @Autowired
     public ProductRepository productRepository;
@@ -43,35 +45,13 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-//    public void updateProduct(Product product){
-//        productRepository.save(product);
-//    }
-
 
     //<------------ Delete Method ------------------->
-    public Boolean deleteProduct(int id) {
-        productRepository.deleteProduct(id);
-        System.out.println(id + " has been deleted from the list of products!");
-        return true;
+    public void deleteProduct(Product product) {
+        productRepository.delete(product);
     }
 
-//    public Boolean deleteByProductId(Product product) {
-//        productRepository.deleteByProductId(product);
-//        System.out.println("The product listed by Id: "+product+" has been deleted!");
-//        return true;
-//    }
 
-    public Boolean deleteByProductName(String name) {
-        productRepository.deleteByProductName(name);
-        System.out.println("All products named:  "+name+" has been deleted!");
-        return true;
-    }
-
-    public Boolean deleteByProductId(int price) {
-        productRepository.deleteByProductId(price);
-        System.out.println("All products that cost: "+price+" has been deleted!");
-        return true;
-    }
 }
 
 //    public Product createOrUpdateProduct(int productId){

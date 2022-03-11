@@ -1,5 +1,6 @@
 package Spring.controller;
 
+import Spring.model.Inventory;
 import Spring.model.Store;
 import Spring.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +29,11 @@ public class StoreController {
         storeService.saveStore(store);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value ="/deleteStore/{id}")
-    public Boolean deleteStoreId(@RequestBody int id){
-        return storeService.deleteStoreId(id);
+    @DeleteMapping("/deleteStore/{store}")
+    public Boolean deletestore(@PathVariable Store store){
+        storeService.deleteInventory(store);
+        System.out.println(store.toString() + " was deleted from list of products");
+        return true;
     }
 
 

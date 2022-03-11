@@ -1,6 +1,7 @@
 package Spring.controller;
 
 import Spring.model.Product;
+import Spring.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import Spring.service.ProductService;
@@ -37,11 +38,6 @@ public class ProductController {
     }
 
     //<---------------- Create/update methods -------------->
-//    @PostMapping("/product")
-//    public Product addProduct(@RequestBody Product product){
-//        return productService.productRepository.save(product);
-//    }
-
 
     @RequestMapping(method = RequestMethod.PUT,value ="/product/{id}")
     public void updateProduct(@RequestBody Product product) {
@@ -50,28 +46,12 @@ public class ProductController {
 
     //<------------ Delete Method ------------------->
 
-//    @DeleteMapping("/product/{id}")
-//    public Boolean deleteProduct(@PathVariable int id){
-//        return productService.deleteProduct(id);
-//    }
-
-    @DeleteMapping("/deleteProduct/{name}")
-    public Boolean deleteByProductName(@PathVariable String name){
-        return productService.deleteByProductName(name);
-
-    }
-
-    @RequestMapping(method = RequestMethod.DELETE,value ="/deleteProduct/{id}")
-    public Boolean deleteByProductId(@PathVariable int id){
-        return productService.deleteByProductId(id);
-    }
-
-    @DeleteMapping("/product")
+    @DeleteMapping("/deleteProduct/{product}")
     public Boolean deleteProduct(@PathVariable Product product){
+        productService.deleteProduct(product);
+        System.out.println(product.toString() + " was deleted from list of products");
         return true;
     }
-
- //   <------------------ 2 --------------->
 
 
 }

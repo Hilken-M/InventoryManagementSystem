@@ -1,5 +1,6 @@
 package Spring.repository;
 
+
 import Spring.model.Store;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -18,6 +19,5 @@ public interface StoreRepository extends JpaRepository<Store, Integer> {
     @Query("FROM Store where storeID =:id")
     Store getStoreById(int id);
 
-    @Query("FROM Store where storeId =:id")
-    Boolean deleteByStoreId(int id);
+    void delete (Store store);
 }

@@ -1,6 +1,7 @@
 package Spring.repository;
 
 import Spring.model.Inventory;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -22,9 +23,6 @@ public interface InventoryRepository extends JpaRepository<Inventory, Integer> {
     @Query("FROM Store where storeID =:id")
     Inventory getInventoryById(int id);
 
-    @Query("FROM Store where storeId =:id")
-    Boolean deleteByInventoryId(int id);
-
-
+    void delete(Inventory inventory);
 
 }

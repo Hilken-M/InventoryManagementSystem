@@ -1,13 +1,15 @@
 package Spring.service;
 
 import Spring.model.Inventory;
+import Spring.model.Product;
 import Spring.repository.InventoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 
 import java.util.List;
-@Service
+@Component
 public class InventoryService {
 
     @Autowired
@@ -30,8 +32,9 @@ public class InventoryService {
          inventoryRepository.save(inventory);
     }
 
-    public Boolean deleteInventoryId(int id) {
-        System.out.println("Inventory id: "+id+ " has been deleted");
-        return inventoryRepository.deleteByInventoryId(id);
+    public void deleteInventory(Inventory inventory) {
+        inventoryRepository.delete(inventory);
     }
+
+
 }

@@ -1,6 +1,7 @@
 package Spring.controller;
 
 import Spring.model.Inventory;
+import Spring.model.Product;
 import Spring.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -30,9 +31,11 @@ public class InventoryController {
         inventoryService.saveInventory(inventory);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value ="/deleteInventory/{id}")
-    public Boolean deleteInventoryId(@RequestBody int id){
-        return inventoryService.deleteInventoryId(id);
+    @DeleteMapping("/deleteInventory/{inventory}")
+    public Boolean deleteProduct(@PathVariable Inventory inventory){
+        inventoryService.deleteInventory(inventory);
+        System.out.println(inventory.toString() + " was deleted from list of products");
+        return true;
     }
 
 }

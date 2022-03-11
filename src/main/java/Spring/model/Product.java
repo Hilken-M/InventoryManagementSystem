@@ -13,7 +13,6 @@ import java.util.Collection;
 @ToString
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int productId;
     @Column
     private String name; //make this column unique

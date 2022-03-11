@@ -16,8 +16,6 @@ import javax.persistence.*;
 
 public class Inventory {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "inventoryId", updatable = false, nullable = false)
     private int inventoryId;
     @Column
     private int quantity;
